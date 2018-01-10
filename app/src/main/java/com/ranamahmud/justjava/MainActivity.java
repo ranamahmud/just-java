@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int quantity = 0;
     private boolean hasWhippedTopping;
+    private boolean hasChocolate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +63,21 @@ public class MainActivity extends AppCompatActivity {
         int total = quantity * 5;
         CheckBox hasTopping = findViewById(R.id.checkboxToppings);
         hasWhippedTopping = hasTopping.isChecked();
+        CheckBox hasChocolateCheckBox = findViewById(R.id.chocolate_checkbox);
+        hasChocolate = hasChocolateCheckBox.isChecked();
         if(hasWhippedTopping==true){
             total += 10;
+        }
+        if(hasChocolate==true){
+            total += 15;
         }
         return total;
     }
     private String createOrderSummary(int quantity){
         String summary = "Name: Md. Rana Mahmud\nQuantity: "+quantity+"\n"
+                + "Add chocolate?"+hasChocolate+"\n"
+                +"Add whipped cream?"+hasWhippedTopping+"\n"
+
                 +"Total :"+quantity*5+"!";
         return summary;
     }
