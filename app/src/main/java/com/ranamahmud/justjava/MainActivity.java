@@ -1,6 +1,7 @@
 package com.ranamahmud.justjava;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = findViewById(R.id.order_summary_text_view);
         priceTextView.setText(createOrderSummary(quantity));
       //  priceTextView.setText("Total price: "+NumberFormat.getCurrencyInstance().format(quantity*5)+"\nThank you!");
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("*/*");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Order Coffee");
-        intent.putExtra(Intent.EXTRA_STREAM, createOrderSummary(quantity));
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_TEXT, createOrderSummary(quantity));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee Order");
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+
 
 
     }
