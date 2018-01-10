@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context="com.ranamahmud.justjava.MainActivity"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="TOPPINGS" />
+
+    <CheckBox
+        android:id="@+id/checkboxToppings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="Whipped cream"
+        android:textSize="16sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
