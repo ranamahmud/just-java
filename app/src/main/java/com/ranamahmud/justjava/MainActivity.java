@@ -3,6 +3,7 @@ package com.ranamahmud.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -10,6 +11,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     private int quantity = 0;
+    private boolean hasWhippedTopping;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private int calculatePrice(int quantity){
         int total = quantity * 5;
+        CheckBox hasTopping = findViewById(R.id.checkboxToppings);
+        hasWhippedTopping = hasTopping.isChecked();
+        if(hasWhippedTopping==true){
+            total += 10;
+        }
         return total;
     }
     private String createOrderSummary(int quantity){
