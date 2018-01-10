@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -13,11 +14,14 @@ public class MainActivity extends AppCompatActivity {
     private int quantity = 0;
     private boolean hasWhippedTopping;
     private boolean hasChocolate;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        EditText editTextName = findViewById(R.id.editTextName);
+        name = String.valueOf(editTextName.getText());
 
 
 
@@ -74,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         return total;
     }
     private String createOrderSummary(int quantity){
-        String summary = "Name: Md. Rana Mahmud\nQuantity: "+quantity+"\n"
+        String summary = name + "\nQuantity: "+quantity+"\n"
                 + "Add chocolate?"+hasChocolate+"\n"
                 +"Add whipped cream?"+hasWhippedTopping+"\n"
 
